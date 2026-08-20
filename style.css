@@ -1,4 +1,4 @@
-  /* Reset & Base */
+   /* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -146,6 +146,8 @@ nav {
     justify-content: center;
 }
 
+/* ====== GLOW CARDS START ====== */
+
 /* Level Cards with Glow */
 .levels {
     padding: 80px 60px;
@@ -176,13 +178,42 @@ nav {
     cursor: pointer;
     border: 2px solid #333;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated rainbow border glow */
+.level-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #4a6cf7, #00d4ff, #4a6cf7, #00d4ff);
+    background-size: 400% 400%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    animation: glowBorder 3s ease infinite;
+}
+
+.level-card:hover::before {
+    opacity: 1;
 }
 
 .level-card:hover {
-    transform: translateY(-15px) rotateX(2deg);
-    box-shadow: 0 0 40px rgba(74, 108, 247, 0.3), 0 0 80px rgba(74, 108, 247, 0.1);
-    border-color: #4a6cf7;
+    transform: translateY(-15px) rotateX(2deg) scale(1.02);
+    box-shadow: 0 0 50px rgba(74, 108, 247, 0.4), 0 0 100px rgba(74, 108, 247, 0.2);
+    border-color: transparent;
     background: #2a2a2a;
+}
+
+@keyframes glowBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .level-card .icon {
@@ -216,14 +247,17 @@ nav {
     font-weight: 600;
     display: inline-block;
     box-shadow: 0 0 20px rgba(74, 108, 247, 0.2);
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .level-card:hover .badge {
-    box-shadow: 0 0 30px rgba(74, 108, 247, 0.5);
+    box-shadow: 0 0 30px rgba(74, 108, 247, 0.6), 0 0 60px rgba(74, 108, 247, 0.3);
+    background: #00d4ff;
+    color: #1a1a1a;
 }
 
-/* Practice Cards with Glow */
+/* ====== PRACTICE CARDS GLOW ====== */
+
 .practice {
     padding: 80px 60px;
     background: #1a1a1a;
@@ -253,23 +287,45 @@ nav {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow background pulse */
+.practice-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(74, 108, 247, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.practice-card:hover::after {
+    opacity: 1;
 }
 
 .practice-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 35px rgba(74, 108, 247, 0.25), 0 0 70px rgba(74, 108, 247, 0.1);
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(74, 108, 247, 0.3), 0 0 80px rgba(74, 108, 247, 0.15);
     border-color: #4a6cf7;
+    background: #2a2a2a;
 }
 
 .practice-card .emoji {
     font-size: 40px;
     display: block;
     margin-bottom: 10px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .practice-card:hover .emoji {
-    transform: translateY(-5px) scale(1.1);
+    transform: translateY(-5px) scale(1.2);
+    text-shadow: 0 0 30px rgba(74, 108, 247, 0.5);
 }
 
 .practice-card h4 {
