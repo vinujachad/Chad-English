@@ -212,6 +212,8 @@ nav {
     text-align: center;
     padding: 100px 20px 80px;
     background: #1a1a1a;
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -243,12 +245,86 @@ nav {
     justify-content: center;
 }
 
+/* ====== WORD OF THE DAY ====== */
+
+.word-of-day {
+    padding: 60px 20px;
+    background: #1a1a1a;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.word-of-day h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+}
+
+.word-card {
+    background: #252525;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 2px solid #333;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.word-card:hover {
+    border-color: #4a6cf7;
+    box-shadow: 0 0 40px rgba(74, 108, 247, 0.2), 0 0 80px rgba(74, 108, 247, 0.1);
+    transform: scale(1.02);
+}
+
+.word-card h3 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #4a6cf7;
+    text-shadow: 0 0 30px rgba(74, 108, 247, 0.3);
+    margin-bottom: 15px;
+    transition: text-shadow 0.3s ease;
+}
+
+.word-card:hover h3 {
+    text-shadow: 0 0 50px rgba(74, 108, 247, 0.6), 0 0 100px rgba(74, 108, 247, 0.3);
+}
+
+.word-card #meaning {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.word-card #example {
+    font-size: 16px;
+    color: #888;
+    font-style: italic;
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #4a6cf7;
+}
+
+/* Loading animation */
+.word-card.loading h3 {
+    animation: pulseText 1s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
 /* ====== GLOW CARDS START ====== */
 
 /* Level Cards with Glow */
 .levels {
     padding: 80px 60px;
     background: #1a1a1a;
+    position: relative;
+    z-index: 1;
 }
 
 .levels h2 {
@@ -358,6 +434,8 @@ nav {
 .practice {
     padding: 80px 60px;
     background: #1a1a1a;
+    position: relative;
+    z-index: 1;
 }
 
 .practice h2 {
@@ -441,6 +519,8 @@ footer {
     padding: 30px;
     background: #111;
     color: #888;
+    position: relative;
+    z-index: 1;
 }
 
 /* Responsive */
@@ -465,5 +545,8 @@ footer {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+    }
+    .word-card h3 {
+        font-size: 36px;
     }
 }
