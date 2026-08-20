@@ -46,6 +46,16 @@
         </div>
     </section>
 
+    <!-- Word of the Day -->
+    <section class="word-of-day">
+        <h2>📖 Word of the Day</h2>
+        <div class="word-card loading">
+            <h3 id="word">Loading...</h3>
+            <p id="meaning">Please wait...</p>
+            <p id="example">✨</p>
+        </div>
+    </section>
+
     <!-- Features / Levels -->
     <section class="levels">
         <h2>Choose Your Level</h2>
@@ -102,6 +112,106 @@
     <footer>
         <p>© 2026 EnglishHub — Learn English for Free</p>
     </footer>
+
+    <!-- Word of the Day JavaScript -->
+    <script>
+        // Word list - Add as many as you want!
+        const words = [
+            {
+                word: "Serendipity",
+                meaning: "The occurrence of events by chance in a happy or beneficial way.",
+                example: "A serendipity led her to find the perfect job while on vacation."
+            },
+            {
+                word: "Ephemeral",
+                meaning: "Lasting for a very short time.",
+                example: "The beauty of a sunset is ephemeral but breathtaking."
+            },
+            {
+                word: "Resilience",
+                meaning: "The capacity to recover quickly from difficulties.",
+                example: "Her resilience helped her overcome every obstacle."
+            },
+            {
+                word: "Eloquent",
+                meaning: "Fluent or persuasive in speaking or writing.",
+                example: "The speaker gave an eloquent speech that moved the audience."
+            },
+            {
+                word: "Mellifluous",
+                meaning: "Sweet or musical; pleasant to hear.",
+                example: "Her mellifluous voice calmed everyone in the room."
+            },
+            {
+                word: "Ubiquitous",
+                meaning: "Present, appearing, or found everywhere.",
+                example: "Smartphones have become ubiquitous in modern life."
+            },
+            {
+                word: "Ambivalent",
+                meaning: "Having mixed feelings or contradictory ideas.",
+                example: "He felt ambivalent about moving to a new city."
+            },
+            {
+                word: "Benevolent",
+                meaning: "Well-meaning and kindly.",
+                example: "The benevolent old man donated to charity every year."
+            },
+            {
+                word: "Cacophony",
+                meaning: "A harsh, discordant mixture of sounds.",
+                example: "The cacophony of traffic made it hard to concentrate."
+            },
+            {
+                word: "Diligent",
+                meaning: "Having or showing care and conscientiousness in work.",
+                example: "She was a diligent student who always completed her homework."
+            },
+            {
+                word: "Empathy",
+                meaning: "The ability to understand and share the feelings of another.",
+                example: "She showed empathy by listening without judgment."
+            },
+            {
+                word: "Felicity",
+                meaning: "Intense happiness; the ability to find appropriate expression.",
+                example: "His felicity in writing made every sentence a pleasure to read."
+            },
+            {
+                word: "Gregarious",
+                meaning: "Fond of company; sociable.",
+                example: "He was a gregarious person who loved meeting new people."
+            },
+            {
+                word: "Hackneyed",
+                meaning: "Lacking significance through having been overused.",
+                example: "The movie plot was hackneyed and predictable."
+            },
+            {
+                word: "Ineffable",
+                meaning: "Too great or extreme to be expressed in words.",
+                example: "The joy she felt was ineffable at that moment."
+            }
+        ];
+
+        // Get today's date as a string (e.g., "2025-08-20")
+        const today = new Date().toISOString().split('T')[0];
+
+        // Use the date to pick a consistent word for the day
+        let dayIndex = 0;
+        for (let i = 0; i < today.length; i++) {
+            dayIndex += today.charCodeAt(i);
+        }
+        const wordOfDay = words[dayIndex % words.length];
+
+        // Update the HTML
+        document.getElementById('word').textContent = wordOfDay.word;
+        document.getElementById('meaning').textContent = wordOfDay.meaning;
+        document.getElementById('example').textContent = `✨ "${wordOfDay.example}"`;
+
+        // Remove loading state
+        document.querySelector('.word-card').classList.remove('loading');
+    </script>
 
 </body>
 </html>
